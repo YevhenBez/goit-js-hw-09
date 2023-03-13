@@ -19,7 +19,7 @@ const options = {
     },
 };
 
-flatpickr("#myID", {});
+flatpickr(inputField, options);
 
 
 
