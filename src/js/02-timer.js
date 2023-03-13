@@ -5,6 +5,8 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const btnStart = document.querySelector('button[data-start]');
 
+const inputField = document.querySelector('#datetime-picker');
+
 btnStart.disabled = !btnStart.disabled;
 
 const options = {
@@ -16,3 +18,9 @@ const options = {
     console.log(selectedDates[0]);
     },
 };
+
+flatpickr("#myID", {});
+
+
+
+
