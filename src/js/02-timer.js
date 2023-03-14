@@ -44,5 +44,4 @@ inputField.addEventListener("input", () => {
 }
 );
 
-
-
+const defaultDateInMs = options.defaultDate.getTime();
