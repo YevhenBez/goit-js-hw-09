@@ -9,6 +9,7 @@ const inputField = document.querySelector('#datetime-picker');
 
 btnStart.disabled = !btnStart.disabled;
 
+let dateSelected;
 
 const options = {
     enableTime: true,
@@ -17,12 +18,7 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         console.log(selectedDates[0]);
-
-        if (selectedDates[0] <= options.defaultDate) {
-            window.alert("Please choose a date in the future");
-        } else {
-            btnStart.disabled = !btnStart.disabled;
-        }
+        dateSelected = selectedDates[0];
     },
 };
 
@@ -30,6 +26,23 @@ const options = {
 flatpickr(inputField, options);
 
 
+inputField.addEventListener("input", () => {
+    setTimeout(() => {
+        if (dateSelected <= options.defaultDate) {
+            window.alert("Please choose a date in the future");
+        }
+    }, 1000);
+}
+);
+
+inputField.addEventListener("input", () => {
+    setTimeout(() => {
+        if (dateSelected > options.defaultDate) {
+        btnStart.disabled = !btnStart.disabled;
+    }
+    }, 1000);
+}
+);
 
 
 
