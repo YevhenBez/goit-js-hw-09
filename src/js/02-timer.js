@@ -22,9 +22,7 @@ const options = {
     },
 };
 
-
 flatpickr(inputField, options);
-
 
 inputField.addEventListener("input", () => {
     setTimeout(() => {
@@ -44,4 +42,22 @@ inputField.addEventListener("input", () => {
 }
 );
 
-const defaultDateInMs = options.defaultDate.getTime();
+let timerId;
+
+btnStart.addEventListener("click", () => {
+    timerId = setInterval(() => {
+        const options = {
+            enableTime: true,
+            time_24hr: true,
+            defaultDate: new Date(),
+            minuteIncrement: 1,
+            onClose(selectedDates) {
+                console.log(selectedDates[0]);
+                dateSelected = selectedDates[0];
+            },
+        };
+        const dateSelectedInMs = dateSelected.getTime();
+        const defaultDateInMs = options.defaultDate.getTime();
+        const ms = dateSelectedInMs - defaultDateInMs;
+    }, 1000);
+});
