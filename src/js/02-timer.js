@@ -7,6 +7,14 @@ const btnStart = document.querySelector('button[data-start]');
 
 const inputField = document.querySelector('#datetime-picker');
 
+const daysField = document.querySelector('.value[data-days]');
+
+const hoursField = document.querySelector('.value[data-hours]');
+
+const minutesField = document.querySelector('.value[data-minutes]');
+
+const secondsField = document.querySelector('.value[data-seconds]');
+
 btnStart.disabled = !btnStart.disabled;
 
 let dateSelected;
@@ -68,9 +76,13 @@ btnStart.addEventListener("click", () => {
 
         const readyTimeformattedObj = addLeadingZero(readyTime);
 
-        console.log(readyTimeformattedObj);
+        daysField.textContent = readyTimeformattedObj.days;
 
-        console.log(readyTimeformattedObj.seconds);
+        hoursField.textContent = readyTimeformattedObj.hours;
+
+        minutesField.textContent = readyTimeformattedObj.minutes;
+
+        secondsField.textContent = readyTimeformattedObj.seconds;
 
     }, 1000);
 });
