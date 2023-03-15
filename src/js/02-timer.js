@@ -44,6 +44,10 @@ inputField.addEventListener("input", () => {
 
 let timerId;
 
+let readyTime;
+
+let readyTimeformatted;
+
 btnStart.addEventListener("click", () => {
     timerId = setInterval(() => {
         const options = {
@@ -60,7 +64,14 @@ btnStart.addEventListener("click", () => {
         const defaultDateInMs = options.defaultDate.getTime();
         const ms = dateSelectedInMs - defaultDateInMs;
 
-        const readyTime = convertMs(ms);
+        readyTime = convertMs(ms);
+
+        const readyTimeformattedObj = addLeadingZero(readyTime);
+
+        console.log(readyTimeformattedObj);
+
+        console.log(readyTimeformattedObj.seconds);
+
     }, 1000);
 });
 
@@ -81,4 +92,10 @@ function convertMs(ms) {
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
     return { days, hours, minutes, seconds };
+}
+
+function addLeadingZero({ days, hours, minutes, seconds }) {
+
+    return readyTimeformatted = {days: `${days.toString().padStart(2, "0")}`, hours: `${hours.toString().padStart(2, "0")}`, minutes: `${minutes.toString().padStart(2, "0")}`, seconds: `${seconds.toString().padStart(2, "0")}`};
+
 }
