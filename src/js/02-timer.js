@@ -59,6 +59,8 @@ btnStart.addEventListener("click", () => {
         const dateSelectedInMs = dateSelected.getTime();
         const defaultDateInMs = options.defaultDate.getTime();
         const ms = dateSelectedInMs - defaultDateInMs;
+
+        const readyTime = convertMs(ms);
     }, 1000);
 });
 
