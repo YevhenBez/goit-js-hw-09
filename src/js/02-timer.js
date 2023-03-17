@@ -84,6 +84,9 @@ btnStart.addEventListener("click", () => {
 
         secondsField.textContent = readyTimeformattedObj.seconds;
 
+        if (daysField.textContent === "00" && hoursField.textContent === "00" && minutesField.textContent === "00" && secondsField.textContent === "00") {
+            clearInterval(timerId);
+        }
     }, 1000);
 });
 
