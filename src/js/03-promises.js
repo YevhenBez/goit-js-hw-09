@@ -10,7 +10,7 @@ const inputAmount = btn.previousElementSibling.firstElementChild;
 
 let counter = 0;
 
-let amountFromUser;
+let amountFromUserTren;
 
 form.addEventListener('input', onFormInput);
 
@@ -27,7 +27,18 @@ const delayYxxxx = 300;
 form.addEventListener("submit", event => {
   event.preventDefault();
   
-  while (counter < 10) {
+  const savedDelayStepAmount = localStorage.getItem("data-from-user");
+
+  const parsedDelayStepAmount = JSON.parse(savedDelayStepAmount);
+
+  console.log(parsedDelayStepAmount);
+  // {delay: '787', step: '585', amount: '44'}
+
+  const amountFromUser = parsedDelayStepAmount.amount;
+
+  console.log(amountFromUser);
+
+  while (counter <= amountFromUser) {
   console.log("counter: ", counter);
   counter += 1;
 }
@@ -40,11 +51,11 @@ function createPromise(position, delay) {
   if (shouldResolve) {
     // Fulfill
     // resolve('Done!');
-    return Promise.resolve({position: amountFromUser, delay: delayYxxxx});
+    return Promise.resolve({position: amountFromUserTren, delay: delayYxxxx});
   } else {
     // Reject
     // reject('Error!');
-    return Promise.reject({position: amountFromUser, delay: delayYxxxx});
+    return Promise.reject({position: amountFromUserTren, delay: delayYxxxx});
   }
 }
 
